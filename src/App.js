@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState,useEffect} from "react";
+import randomWords from "random-words";
+import randomSentence from "random-sentence";
 
-function App() {
+const words = randomWords(100).join(' ');
+
+const App = () => {
+  const [sentence,setSentence] = useState([]);
+  useEffect(() =>{
+    setSentence(words)
+  },[]);
+  console.log(sentence);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <p> {sentence} </p>
     </div>
   );
 }
