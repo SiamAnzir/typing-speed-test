@@ -39,11 +39,13 @@ const App = () => {
     }
   }
   const checkWord = () => {
-    if(words[currentWordIndex] === currentValue.trim){
+    if(words[currentWordIndex] === currentValue.trim()){
       setCorrectWord(correctWord + 1);
+      console.log(correctWord);
     }
     else{
       setIncorrectWord(incorrectWord + 1);
+      console.log(correctWord);
     }
   }
   //const words = randomWords(100).join(' ');
