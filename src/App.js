@@ -1,7 +1,7 @@
 import './App.css';
 import {useState,useEffect} from "react";
 import randomWords from "random-words";
-import randomSentence from "random-sentence";
+//import randomSentence from "random-sentence";
 
 
 const App = () => {
@@ -59,7 +59,7 @@ const App = () => {
         <input type="text" onKeyDown={handleKeyUpdate} value={currentValue} onChange={(e) => setCurrentValue(e.target.value)}/>
       </div>
       <div>
-        <button onClick={countDownStart}>
+        <button className="primary" onClick={countDownStart}>
           Start
         </button>
       </div>
