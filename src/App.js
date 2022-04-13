@@ -9,6 +9,8 @@ const App = () => {
   const [count,setCount] = useState(time);
   const [currentValue, setCurrentValue] = useState("");
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentChar, setCurrentChar] = useState("");
+  const [currentCharIndex, setCurrentCharIndex] = useState(-1);
   const [correctWord, setCorrectWord] = useState(0)
   const [incorrectWord, setIncorrectWord] = useState(0)
   const [status,setStatus] = useState("watching");
@@ -33,6 +35,8 @@ const App = () => {
       setCurrentWordIndex(0);
       setCorrectWord(0);
       setIncorrectWord(0);
+      setCurrentCharIndex(-1);
+      setCurrentChar("");
     }
     if(status !== "started"){
       setStatus("started");
@@ -51,11 +55,19 @@ const App = () => {
       },1000)
     }
   }
-  const handleKeyUpdate = ({keyCode}) => {
+  const handleKeyUpdate = ({key, keyCode}) => {
     if(keyCode === 32){
       checkWord();
       setCurrentValue("");
       setCurrentWordIndex(currentWordIndex + 1);
+      setCurrentCharIndex(-1);
+    }
+    else if (keyCode === 8) {
+      setCurrentCharIndex(currentCharIndex - 1);
+      setCurrentChar("");
+    } else {
+      setCurrentCharIndex(currentCharIndex + 1);
+      setCurrentChar(key);
     }
   }
   const checkWord = () => {
@@ -64,6 +76,21 @@ const App = () => {
     }
     else{
       setIncorrectWord(incorrectWord + 1);
+    }
+  }
+  const setCharClass = (wordIndex,charIndex,char) => {
+    if(wordIndex === currentWordIndex && charIndex === currentCharIndex && currentChar && status !== 'finished'){
+      return (char === currentChar) ? (
+          "correct-word"
+      ) : (
+          "incorrect-word"
+      )
+    }
+    else if(wordIndex === currentWordIndex && currentCharIndex >= words[currentWordIndex].length){
+      return "incorrect-word";
+    }
+    else{
+      return "";
     }
   }
   //const words = randomWords(100).join(' ');
@@ -91,13 +118,13 @@ const App = () => {
         <div>
           {words.map((word,index) => (
               <span key={index}>
-                        <span>
-                          {word.split("").map((char,i) => (
-                              <span key={i}>{char}</span>
-                          ))}
-                        </span>
-                        <span> </span>
-                      </span>
+                <span>
+                  {word.split("").map((char,i) => (
+                      <span className={setCharClass(index,i,char)} key={i}>{char}</span>
+                  ))}
+                </span>
+                <span> </span>
+              </span>
           ))}
         </div>
         <div>
