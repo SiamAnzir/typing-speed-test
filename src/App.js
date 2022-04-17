@@ -78,6 +78,9 @@ const App = () => {
       setIncorrectWord(incorrectWord + 1);
     }
   }
+  /**
+  }background-color: #003366;
+   **/
   const setCharClass = (wordIndex,charIndex,char) => {
     if(wordIndex === currentWordIndex && charIndex === currentCharIndex && currentChar && status !== 'finished'){
       return (char === currentChar) ? (
@@ -93,31 +96,33 @@ const App = () => {
       return "";
     }
   }
-  //const words = randomWords(100).join(' ');
-  //console.log(words.join(' '));
+
   return (
-    <div className="App">
+    <section className="App">
       <div>
-        <h3>{count}</h3>
-      </div>
-      <div>
-        <input ref={textInput} disabled={status !== "started"} type="text" onKeyDown={handleKeyUpdate} value={currentValue} onChange={(e) => setCurrentValue(e.target.value)}/>
-      </div>
-      <div>
-        <button className="primary" onClick={countDownStart}>
-          {
-            (status === "finished") ? (
-                "Restart"
-            ) : (
-                "Start"
-            )
-          }
-        </button>
-      </div>
-      <div>
-        <div>
-          {words.map((word,index) => (
-              <span key={index}>
+        <div className="text-box">
+          <div className="header-row">
+            <div className="header-column">
+              <p>{count}</p>
+            </div>
+            <div className="header-column">
+              <input ref={textInput} disabled={status !== "started"} type="text" onKeyDown={handleKeyUpdate} value={currentValue} onChange={(e) => setCurrentValue(e.target.value)}/>
+            </div>
+            <div className="header-column">
+              <button className="start-button" onClick={countDownStart}>
+                {
+                  (status === "finished") ? (
+                      "Restart"
+                  ) : (
+                      "Start"
+                  )
+                }
+              </button>
+            </div>
+          </div>
+          <div className="row">
+            {words.map((word,index) => (
+                <span key={index}>
                 <span>
                   {word.split("").map((char,i) => (
                       <span className={setCharClass(index,i,char)} key={i}>{char}</span>
@@ -125,30 +130,33 @@ const App = () => {
                 </span>
                 <span> </span>
               </span>
-          ))}
+            ))}
+          </div>
         </div>
-        <div>
-          <div>
-            <h4>Correct Words</h4>
-            <h5>{correctWord}</h5>
-          </div>
-          <div>
-            <h4>InCorrect Words</h4>
-            <h5>{incorrectWord}</h5>
-          </div>
-          <div>
-            <h4>Accuracy</h4>
-            <h5>
-              {(correctWord !== 0 ? (
-                  Math.round((correctWord / (correctWord + incorrectWord)) * 100) + "%"
-              ) : (
-                  "0%"
-              ))}
-            </h5>
+        <div className="result-box">
+          <div className="row">
+            <div className="column">
+              <h4>Correct Words</h4>
+              <h5>{correctWord}</h5>
+            </div>
+            <div className="column">
+              <h4>InCorrect Words</h4>
+              <h5>{incorrectWord}</h5>
+            </div>
+            <div className="column">
+              <h4>Accuracy</h4>
+              <h5>
+                {(correctWord !== 0 ? (
+                    Math.round((correctWord / (correctWord + incorrectWord)) * 100) + "%"
+                ) : (
+                    "0%"
+                ))}
+              </h5>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
