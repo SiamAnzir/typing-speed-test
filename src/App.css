@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100%;
 }
 
 .App-logo {
@@ -23,9 +24,65 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.text-box {
+  background-color: #D1DDE9;
+  width: 950px;
+  border: 15px solid #003366;
+  padding: 10px;
+  margin: 20px;
+  font-size: 1.1em;
+}
+.result-box {
+  background-color: #D1DDE9;
+  width: 950px;
+  border: 15px solid #003366;
+  padding: 10px;
+  margin: 20px;
+}
+.header-row {
+  border:2px solid #003366;
+  margin-bottom: 10px;
+}
+.header-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.header-column {
+  float: left;
+  width: 30%;
+  padding: 1px;
+}
+.column {
+  float: left;
+  width: 30%;
+  padding: 10px;
+}
 
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.start-button {
+  background-color: #008CBA;
+  border-radius: 12px;
+  width: 100%;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 50px;
+  cursor: pointer;
+}
 .App-link {
   color: #61dafb;
+}
+.hover-word {
+  background-color: yellow;
 }
 .correct-word{
   background-color: green;
