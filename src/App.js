@@ -3,7 +3,7 @@ import {useState,useEffect,useRef} from "react";
 import randomWords from "random-words";
 
 const App = () => {
-  const time = 10;
+  const time = 60;
 
   const [words,setWords] = useState([]);
   const [count,setCount] = useState(time);
@@ -99,7 +99,9 @@ const App = () => {
         <div className="text-box">
           <div className="header-row">
             <div className="header-column">
-              <p className="counter">{"00:" + count}</p>
+              <p className="counter">
+                {(count < 10) ? ( "00:0"+count ) : ("00:"+count)}
+              </p>
             </div>
             <div className="header-column">
               <input className="input-field" ref={textInput} disabled={status !== "started"} type="text" onKeyDown={handleKeyUpdate} value={currentValue} onChange={(e) => setCurrentValue(e.target.value)}/>
