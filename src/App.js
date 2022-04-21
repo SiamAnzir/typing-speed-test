@@ -78,9 +78,6 @@ const App = () => {
       setIncorrectWord(incorrectWord + 1);
     }
   }
-  /**
-  }background-color: #003366;
-   **/
   const setCharClass = (wordIndex,charIndex,char) => {
     if(wordIndex === currentWordIndex && charIndex === currentCharIndex && currentChar && status !== 'finished'){
       return (char === currentChar) ? (
@@ -96,17 +93,16 @@ const App = () => {
       return "";
     }
   }
-
   return (
     <section className="App">
       <div>
         <div className="text-box">
           <div className="header-row">
             <div className="header-column">
-              <p>{count}</p>
+              <p className="counter">{"00:" + count}</p>
             </div>
             <div className="header-column">
-              <input ref={textInput} disabled={status !== "started"} type="text" onKeyDown={handleKeyUpdate} value={currentValue} onChange={(e) => setCurrentValue(e.target.value)}/>
+              <input className="input-field" ref={textInput} disabled={status !== "started"} type="text" onKeyDown={handleKeyUpdate} value={currentValue} onChange={(e) => setCurrentValue(e.target.value)}/>
             </div>
             <div className="header-column">
               <button className="start-button" onClick={countDownStart}>
