@@ -78,6 +78,24 @@
   margin: 4px 50px;
   cursor: pointer;
 }
+.input-field {
+  border-color: #003366;
+  border-radius: 12px;
+  width: 70%;
+  color: black;
+  padding: 8px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 26px;
+  margin: 4px 20px;
+}
+.counter {
+  font-size: 52px;
+  margin: 0 20px;
+  padding: 0 30px;
+  width: 70%;
+}
 .App-link {
   color: #61dafb;
 }
