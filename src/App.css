@@ -38,20 +38,47 @@
     margin-right: 50px;
     text-decoration: none;
 }
-.text-box {
-  background-color: #D1DDE9;
-  width: 950px;
-  border: 15px solid #003366;
-  padding: 10px;
-  margin: 20px;
-  font-size: 1.1em;
+
+.start-button {
+    background-color: #008CBA;
+    border-radius: 12px;
+    width: 100%;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 50px;
+    cursor: pointer;
 }
-.result-box {
+.input-field {
+    border-color: #003366;
+    border-radius: 12px;
+    width: 70%;
+    color: black;
+    padding: 8px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+    margin: 4px 20px;
+}
+.counter {
+    font-size: 52px;
+    margin: 0 20px;
+    padding: 0 30px;
+    width: 70%;
+}
+.text-box {
+  position: fixed;
   background-color: #D1DDE9;
   width: 950px;
+  min-height: 480px;
   border: 15px solid #003366;
   padding: 10px;
   margin: 20px;
+  font-size: 20px;
 }
 .header-row {
   border:2px solid #003366;
@@ -67,9 +94,18 @@
   width: 30%;
   padding: 1px;
 }
+.result-box {
+    position: fixed;
+    background-color: #D1DDE9;
+    width: 250px;
+    border: 15px solid #003366;
+    padding: 10px;
+    margin-left: 1050px;
+    margin-top: 20px;
+}
 .column {
   float: left;
-  width: 30%;
+  width: 40%;
   padding: 10px;
 }
 
@@ -78,37 +114,6 @@
   content: "";
   display: table;
   clear: both;
-}
-.start-button {
-  background-color: #008CBA;
-  border-radius: 12px;
-  width: 100%;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 50px;
-  cursor: pointer;
-}
-.input-field {
-  border-color: #003366;
-  border-radius: 12px;
-  width: 70%;
-  color: black;
-  padding: 8px 30px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 26px;
-  margin: 4px 20px;
-}
-.counter {
-  font-size: 52px;
-  margin: 0 20px;
-  padding: 0 30px;
-  width: 70%;
 }
 .App-link {
   color: #61dafb;
