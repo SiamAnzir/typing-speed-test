@@ -4,7 +4,7 @@ import randomWords from "random-words";
 import Navbar from "./components/Navbar";
 
 const App = () => {
-  const time = 10;
+  const time = 60;
 
   const [words,setWords] = useState([]);
   const [count,setCount] = useState(time);
@@ -134,6 +134,7 @@ const App = () => {
           </div>
         </div>
         <div className="result-box">
+          <h4>Current Result</h4>
           <div className="row">
             <div className="column">
               <h4>Correct Words</h4>
@@ -142,6 +143,12 @@ const App = () => {
             <div className="column">
               <h4>InCorrect Words</h4>
               <h5>{incorrectWord}</h5>
+            </div>
+          </div>
+          <div className="row">
+            <div className="column">
+              <h4>WPM</h4>
+              <h5>{ Math.floor((correctWord +incorrectWord))}</h5>
             </div>
             <div className="column">
               <h4>Accuracy</h4>
