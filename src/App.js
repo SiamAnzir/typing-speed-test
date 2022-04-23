@@ -1,9 +1,10 @@
 import './App.css';
 import {useState,useEffect,useRef} from "react";
 import randomWords from "random-words";
+import Navbar from "./components/Navbar";
 
 const App = () => {
-  const time = 60;
+  const time = 10;
 
   const [words,setWords] = useState([]);
   const [count,setCount] = useState(time);
@@ -95,6 +96,7 @@ const App = () => {
   }
   return (
     <section className="App">
+      <Navbar/>
       <div>
         <div className="text-box">
           <div className="header-row">
