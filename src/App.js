@@ -1,6 +1,8 @@
 import './App.css';
 import {useState,useEffect,useRef} from "react";
 import randomWords from "random-words";
+import useModal from "./hooks/useModal";
+import Modal from "./components/Modal";
 import Navbar from "./components/Navbar";
 
 const App = () => {
@@ -16,6 +18,7 @@ const App = () => {
   const [incorrectWord, setIncorrectWord] = useState(0)
   const [status,setStatus] = useState("watching");
   const textInput = useRef(null);
+  const {isShowing, toggle} = useModal();
 
   useEffect(() =>{
     setWords(createWords);
@@ -96,6 +99,10 @@ const App = () => {
   }
   return (
     <section className="App">
+      <Modal
+          isShowing={isShowing}
+          hide={toggle}
+      />
       <Navbar/>
       <div>
         <div className="text-box">
