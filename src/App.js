@@ -17,6 +17,7 @@ const App = () => {
   const [correctWord, setCorrectWord] = useState(0)
   const [incorrectWord, setIncorrectWord] = useState(0)
   const [status,setStatus] = useState("watching");
+  const [profile,setProfile] = useState("");
   const textInput = useRef(null);
   const {isShowing, toggle} = useModal();
 
@@ -97,13 +98,21 @@ const App = () => {
       return "";
     }
   }
+  const modalHandleSubmit = () => {
+    toggle();
+    setProfile(profile);
+  }
+  const modalInputChange = (event) => {
+    setProfile(event.target.value)
+  }
   return (
     <section className="App">
       <Modal
           isShowing={isShowing}
-          hide={toggle}
+          modalHandleSubmit={modalHandleSubmit}
+          modalInputChange={modalInputChange}
       />
-      <Navbar/>
+      <Navbar profileName={profile}/>
       <div>
         <div className="text-box">
           <div className="header-row">
