@@ -20,7 +20,7 @@
     padding: 0;
     overflow: hidden;
     background-color: #011f3d;
-    font-size: 32px;
+    font-size: 36px;
 }
 .project-name {
     float: left;
@@ -37,6 +37,7 @@
     padding: 14px 16px;
     margin-right: 50px;
     text-decoration: none;
+    text-transform: capitalize;
 }
 
 .start-button {
@@ -152,27 +153,36 @@
 
 .modal {
     z-index: 100;
-    background: white;
+    background: #D1DDE9;
     position: relative;
     margin: 1.75rem auto;
     border-radius: 3px;
     max-width: 500px;
     padding: 2rem;
+    font-size: 34px;
+    text-align: center;
 }
-
-.modal-header {
-    display: flex;
-    justify-content: flex-end;
+.modal-input-field{
+    width: 100%;
+    padding: 16px 20px;
+    margin: 12px 0;
+    display: inline-block;
+    border: 1px solid #003366;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 24px;
+    text-transform: capitalize;
 }
-
-.modal-close-button {
-    font-size: 1.4rem;
-    font-weight: 700;
-    line-height: 1;
-    color: #000;
-    opacity: .3;
-    cursor: pointer;
+.modal-button {
+    width: 100%;
+    background-color: #003366;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
     border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 24px;
 }
 
 @keyframes App-logo-spin {
