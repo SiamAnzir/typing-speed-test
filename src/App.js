@@ -32,7 +32,7 @@ const App = () => {
   },[status]);
 
   const createWords = () => {
-    return new Array(250).fill(null).map(() => randomWords())
+    return new Array(240).fill(null).map(() => randomWords())
   }
   const countDownStart = () => {
     if(status === "finished"){
@@ -150,35 +150,46 @@ const App = () => {
           </div>
         </div>
         <div className="result-box">
-          <h4>Current Result</h4>
+          <div className="result-header">
+            <h1>Current Result</h1>
+          </div>
           <div className="row">
-            <div className="column">
+            <div className="column" style={{borderRight:'2px solid #003366'}}>
               <h4>Correct Words</h4>
-              <h5>{correctWord}</h5>
+              <h4>{correctWord}</h4>
             </div>
             <div className="column">
               <h4>InCorrect Words</h4>
-              <h5>{incorrectWord}</h5>
+              <h4>{incorrectWord}</h4>
             </div>
           </div>
-          <div className="row">
-            <div className="column">
+          <div className="row" style={{borderTop:'2px solid #003366'}}>
+            <div className="column" style={{borderRight:'2px solid #003366'}}>
               <h4>WPM</h4>
-              <h5>{ Math.floor((correctWord +incorrectWord))}</h5>
+              <h4>{ Math.floor((correctWord +incorrectWord))}</h4>
             </div>
             <div className="column">
               <h4>Accuracy</h4>
-              <h5>
+              <h4>
                 {(correctWord !== 0 ? (
                     Math.round((correctWord / (correctWord + incorrectWord)) * 100) + "%"
                 ) : (
                     "0%"
                 ))}
-              </h5>
+              </h4>
             </div>
           </div>
         </div>
+        <div className="avg-result-box">
+          <div className="result-header">
+            <h3>Average WPM</h3>
+          </div>
+          <div>
+            <h4>{ Math.floor((correctWord +incorrectWord))}</h4>
+          </div>
+        </div>
       </div>
+
     </section>
   );
 }
