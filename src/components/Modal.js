@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import profile from '../img/profilepic.png';
 
 const Modal = ({ isShowing, modalHandleSubmit,modalInputChange }) => isShowing ? ReactDOM.createPortal(
     <React.Fragment>
@@ -7,6 +8,9 @@ const Modal = ({ isShowing, modalHandleSubmit,modalInputChange }) => isShowing ?
         <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
             <div className="modal">
                 <form onSubmit={modalHandleSubmit}>
+                    <div>
+                        <img src={profile} alt="profile" style={{height:'300px',width:'320px'}}/>
+                    </div>
                     <label>Type Your Full Name</label>
                     <input className="modal-input-field" required type="text" placeholder="Profile Name...." minLength="8" onChange={modalInputChange}/>
                     <button className="modal-button" type="submit">Submit</button>
