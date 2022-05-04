@@ -45,11 +45,10 @@
     border-radius: 12px;
     width: 100%;
     color: white;
-    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 40px;
     margin: 4px 50px;
     cursor: pointer;
 }
@@ -75,7 +74,7 @@
   position: fixed;
   background-color: #D1DDE9;
   width: 950px;
-  min-height: 480px;
+  height: 480px;
   border: 15px solid #003366;
   padding: 10px;
   margin: 20px;
@@ -98,29 +97,57 @@
 .result-box {
     position: fixed;
     background-color: #D1DDE9;
-    width: 250px;
-    border: 15px solid #003366;
-    padding: 10px;
-    margin-left: 1050px;
+    width: 260px;
+    border: 13px solid #003366;
+    padding: 5px;
+    margin-left: 1040px;
     margin-top: 20px;
+}
+.result-header {
+    border-bottom: 3px solid #003366;
+}
+.avg-result-box {
+    position: fixed;
+    background-color: #D1DDE9;
+    width: 260px;
+    border: 13px solid #003366;
+    padding: 5px;
+    margin-left: 1040px;
+    margin-top: 390px;
 }
 .column {
   float: left;
   width: 40%;
   padding: 10px;
 }
-
 /* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
+.sideNav button{
+    position: fixed;
+    right: -80px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 100px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    border-radius: 15px;
+}
+
+.sideNav button:hover {
+    right: 0;
+}
+
+.full-stat-button {
+    top: 90px;
+    background-color: #008CBA;
+}
 .App-link {
   color: #61dafb;
-}
-.hover-word {
-  background-color: yellow;
 }
 .correct-word{
   background-color: green;
