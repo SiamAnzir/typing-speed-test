@@ -126,7 +126,7 @@
   display: table;
   clear: both;
 }
-.sideNav button{
+.sideNavBtn button{
     position: fixed;
     right: -80px;
     transition: 0.3s;
@@ -138,13 +138,42 @@
     border-radius: 15px;
 }
 
-.sideNav button:hover {
+.sideNavBtn button:hover {
     right: 0;
 }
 
 .full-stat-button {
     top: 90px;
     background-color: #008CBA;
+}
+.sidebar {
+    height: 75%;
+    margin-top: 90px;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #011f3d;
+    overflow-x: hidden;
+    transition: 0.8s;
+    padding-top: 60px;
+}
+.sidebar p {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+.sidebar span {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: white;
 }
 .App-link {
   color: #61dafb;
