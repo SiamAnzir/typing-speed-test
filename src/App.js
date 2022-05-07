@@ -19,7 +19,6 @@ const App = () => {
   const [incorrectWord, setIncorrectWord] = useState(0)
   const [status,setStatus] = useState("watching");
   const [profile,setProfile] = useState("");
-  const [showing, setShowing] = useState(false);
   const textInput = useRef(null);
   const {isShowing, toggle} = useModal();
 
@@ -191,10 +190,7 @@ const App = () => {
           </div>
         </div>
       </div>
-      <div className="sideNavBtn">
-        <button className="full-stat-button" onClick={() => setShowing(true)} type="submit">See Full Stats</button>
-      </div>
-      <Sidebar showing={showing} setShowing={setShowing}/>
+      <Sidebar profileName={profile} correctWord={correctWord} incorrectWord={incorrectWord}/>
     </section>
   );
 }
