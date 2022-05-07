@@ -128,14 +128,14 @@
 }
 .sideNavBtn button{
     position: fixed;
-    right: -80px;
+    right: -70px;
     transition: 0.3s;
     padding: 15px;
     width: 100px;
     text-decoration: none;
     font-size: 20px;
     color: white;
-    border-radius: 15px;
+    border-radius: 55px;
 }
 
 .sideNavBtn button:hover {
@@ -143,27 +143,27 @@
 }
 
 .full-stat-button {
-    top: 90px;
+    top: 20px;
     background-color: #008CBA;
 }
 .sidebar {
-    height: 75%;
+
     margin-top: 90px;
-    width: 250px;
     position: fixed;
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: #011f3d;
+    background-color: #97b1cc;
     overflow-x: hidden;
     transition: 0.8s;
     padding-top: 60px;
 }
 .sidebar p {
+    text-align: center;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: white;
+    color: black;
     display: block;
     transition: 0.3s;
 }
@@ -174,6 +174,16 @@
     font-size: 36px;
     margin-left: 50px;
     color: white;
+}
+.sidebar-column {
+    float: left;
+    padding: 10px;
+}
+/* Clear floats after the columns */
+.sidebar-row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 .App-link {
   color: #61dafb;
