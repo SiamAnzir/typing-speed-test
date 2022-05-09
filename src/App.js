@@ -5,9 +5,16 @@ import useModal from "./hooks/useModal";
 import Modal from "./components/Modal";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 const App = () => {
-  const time = 60;
+  const time = 20;
+  const accuracy = (correctWord,incorrectWord) => {
+    return Math.round((correctWord / (correctWord + incorrectWord)) * 100)
+  };
+  const wpm = (correctWord,incorrectWord) => {
+    return Math.floor((correctWord +incorrectWord))
+  };
 
   const [words,setWords] = useState([]);
   const [count,setCount] = useState(time);
@@ -15,10 +22,20 @@ const App = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentChar, setCurrentChar] = useState("");
   const [currentCharIndex, setCurrentCharIndex] = useState(-1);
-  const [correctWord, setCorrectWord] = useState(0)
-  const [incorrectWord, setIncorrectWord] = useState(0)
+  const [correctWord, setCorrectWord] = useState(0);
+  const [incorrectWord, setIncorrectWord] = useState(0);
   const [status,setStatus] = useState("watching");
-  const [profile,setProfile] = useState("");
+  const [profile,setProfile] = useLocalStorage('name',"");
+  const [numberOfTest,setNumberOfTest] = useLocalStorage('Game Played',0);
+  const newTestResult = {
+    correctWords:correctWord,
+    inCorrectWords:incorrectWord,
+    WPM:wpm(correctWord,incorrectWord),
+    Accuracy:accuracy(correctWord,incorrectWord)
+  }
+  const userInfo = [];
+  const [info,setInfo] = useLocalStorage('userInfo',userInfo);
+  const [currentResult,setCurrentResult] = useState(newTestResult);
   const textInput = useRef(null);
   const {isShowing, toggle} = useModal();
 
@@ -31,6 +48,12 @@ const App = () => {
       textInput.current.focus()
     }
   },[status]);
+
+  useEffect(() => {
+    if(status === "finished"){
+      setInfo([...info,currentResult]);
+    }
+  },[status])
 
   const createWords = () => {
     return new Array(240).fill(null).map(() => randomWords())
@@ -51,7 +74,8 @@ const App = () => {
           if(prevCount === 0){
             clearInterval(interval);
             setStatus("finished");
-            setCurrentValue("")
+            setCurrentValue("");
+            setNumberOfTest(numberOfTest + 1);
             return time;
           }
           else{
@@ -79,9 +103,11 @@ const App = () => {
   const checkWord = () => {
     if(words[currentWordIndex] === currentValue.trim()){
       setCorrectWord(correctWord + 1);
+      setCurrentResult({ correctWords:correctWord+1, inCorrectWords:incorrectWord, WPM:wpm(correctWord+1,incorrectWord), Accuracy:accuracy(correctWord+1,incorrectWord)});
     }
     else{
       setIncorrectWord(incorrectWord + 1);
+      setCurrentResult({ correctWords:correctWord, inCorrectWords:incorrectWord+1, WPM:wpm(correctWord,incorrectWord+1), Accuracy:accuracy(correctWord,incorrectWord+1)});
     }
   }
   const setCharClass = (wordIndex,charIndex,char) => {
@@ -102,16 +128,19 @@ const App = () => {
   const modalHandleSubmit = () => {
     toggle();
     setProfile(profile);
+    //setInfo({profileName:profile,GamePlayed:"", correctWords:{}, inCorrectWords:{}, WPM:{}, Accuracy:{}});
   }
   const modalInputChange = (event) => {
-    setProfile(event.target.value)
+    setProfile(event.target.value);
   }
+
   return (
     <section className="App">
       <Modal
           isShowing={isShowing}
           modalHandleSubmit={modalHandleSubmit}
           modalInputChange={modalInputChange}
+          profileName={profile}
       />
       <Navbar profileName={profile}/>
       <div>
@@ -157,23 +186,23 @@ const App = () => {
           <div className="row">
             <div className="column" style={{borderRight:'2px solid #003366'}}>
               <h4>Correct Words</h4>
-              <h4>{correctWord}</h4>
+              <h4>{currentResult.correctWords}</h4>
             </div>
             <div className="column">
               <h4>InCorrect Words</h4>
-              <h4>{incorrectWord}</h4>
+              <h4>{currentResult.inCorrectWords}</h4>
             </div>
           </div>
           <div className="row" style={{borderTop:'2px solid #003366'}}>
             <div className="column" style={{borderRight:'2px solid #003366'}}>
               <h4>WPM</h4>
-              <h4>{ Math.floor((correctWord +incorrectWord))}</h4>
+              <h4>{ currentResult.WPM }</h4>
             </div>
             <div className="column">
               <h4>Accuracy</h4>
               <h4>
                 {(correctWord !== 0 ? (
-                    Math.round((correctWord / (correctWord + incorrectWord)) * 100) + "%"
+                    currentResult.Accuracy + "%"
                 ) : (
                     "0%"
                 ))}
@@ -186,7 +215,7 @@ const App = () => {
             <h3>Average WPM</h3>
           </div>
           <div>
-            <h4>{ Math.floor((correctWord +incorrectWord))}</h4>
+            <h4>averageWpm</h4>
           </div>
         </div>
       </div>
