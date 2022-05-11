@@ -8,7 +8,7 @@ import Sidebar from "./components/Sidebar";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 const App = () => {
-  const time = 20;
+  const time = 10;
   const accuracy = (correctWord,incorrectWord) => {
     return Math.round((correctWord / (correctWord + incorrectWord)) * 100)
   };
@@ -22,7 +22,7 @@ const App = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentChar, setCurrentChar] = useState("");
   const [currentCharIndex, setCurrentCharIndex] = useState(-1);
-  //const [correctEntity,setCorrectEntity] = useState([]);
+  const [correctEntity,setCorrectEntity] = useState([]);
   const [correctWord, setCorrectWord] = useState(0);
   const [incorrectWord, setIncorrectWord] = useState(0);
   const [status,setStatus] = useState("watching");
@@ -34,9 +34,10 @@ const App = () => {
     WPM:wpm(correctWord,incorrectWord),
     Accuracy:accuracy(correctWord,incorrectWord)
   }
-  const userInfo = [];
-  const [info,setInfo] = useLocalStorage('userInfo',userInfo);
+  const correctEntry = {}
+  const [info,setInfo] = useLocalStorage('userInfo',[]);
   const [currentResult,setCurrentResult] = useState(newTestResult);
+  const [correctChar,setCorrectChar] = useLocalStorage('Correct-Char','');
   const textInput = useRef(null);
   const {isShowing, toggle} = useModal();
 
@@ -53,6 +54,7 @@ const App = () => {
   useEffect(() => {
     if(status === "finished"){
       setInfo([...info,currentResult]);
+      setCorrectChar(correctEntry);
     }
   },[status])
 
@@ -103,7 +105,7 @@ const App = () => {
   }
   const checkWord = () => {
     if(words[currentWordIndex] === currentValue.trim()){
-      //setCorrectEntity([...correctEntity,words[currentWordIndex]]);
+      setCorrectEntity([...correctEntity,words[currentWordIndex]]);
       setCorrectWord(correctWord + 1);
       setCurrentResult({ correctWords:correctWord+1, inCorrectWords:incorrectWord, WPM:wpm(correctWord+1,incorrectWord), Accuracy:accuracy(correctWord+1,incorrectWord)});
     }
@@ -113,6 +115,12 @@ const App = () => {
     }
   }
 
+  const charArray = correctEntity.map((word) => {
+    return word.split('').reduce((total, letter) => {
+      total[letter] ? total[letter]++ : total[letter] = 1;
+      return total;
+    }, correctEntry);
+  })
   const setCharClass = (wordIndex,charIndex,char) => {
     if(wordIndex === currentWordIndex && charIndex === currentCharIndex && currentChar && status !== 'finished'){
       return (char === currentChar) ? (
@@ -152,18 +160,8 @@ const App = () => {
     sum += result.Accuracy ;
     return sum;
   }, 0);
-  const averageWpm = (sumOfWpm/numberOfTest);
+  const averageWpm = (numberOfTest === 0) ? ( 0 ) : ( Math.round(sumOfWpm / numberOfTest));
   const averageAccuracy = Math.round(sumOfAccuracy/numberOfTest);
-  const bestWpm = info.reduce((maximum,result) => {
-    maximum = Math.max(result.WPM)
-    return maximum;
-  })
-  const bestAccuracy = info.reduce((maximum,result) => {
-    maximum = Math.max(result.Accuracy)
-    return maximum;
-  })
-  //console.log(bestWpm);
-  //console.log(bestAccuracy);
   return (
     <section className="App">
       <Modal
@@ -249,7 +247,7 @@ const App = () => {
           </div>
         </div>
       </div>
-      <Sidebar profileName={profile} correctWord={correctWord} incorrectWord={incorrectWord}/>
+      <Sidebar profileName={profile} info={info} correctWord={totalCorrectWords} incorrectWord={totalIncorrectWords} correctChar={correctChar} averageWpm={averageWpm} averageAccuracy={averageAccuracy}/>
     </section>
   );
 }
