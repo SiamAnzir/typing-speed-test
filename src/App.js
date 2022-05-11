@@ -22,6 +22,7 @@ const App = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentChar, setCurrentChar] = useState("");
   const [currentCharIndex, setCurrentCharIndex] = useState(-1);
+  //const [correctEntity,setCorrectEntity] = useState([]);
   const [correctWord, setCorrectWord] = useState(0);
   const [incorrectWord, setIncorrectWord] = useState(0);
   const [status,setStatus] = useState("watching");
@@ -102,6 +103,7 @@ const App = () => {
   }
   const checkWord = () => {
     if(words[currentWordIndex] === currentValue.trim()){
+      //setCorrectEntity([...correctEntity,words[currentWordIndex]]);
       setCorrectWord(correctWord + 1);
       setCurrentResult({ correctWords:correctWord+1, inCorrectWords:incorrectWord, WPM:wpm(correctWord+1,incorrectWord), Accuracy:accuracy(correctWord+1,incorrectWord)});
     }
@@ -110,6 +112,7 @@ const App = () => {
       setCurrentResult({ correctWords:correctWord, inCorrectWords:incorrectWord+1, WPM:wpm(correctWord,incorrectWord+1), Accuracy:accuracy(correctWord,incorrectWord+1)});
     }
   }
+
   const setCharClass = (wordIndex,charIndex,char) => {
     if(wordIndex === currentWordIndex && charIndex === currentCharIndex && currentChar && status !== 'finished'){
       return (char === currentChar) ? (
@@ -125,15 +128,42 @@ const App = () => {
       return "";
     }
   }
+
   const modalHandleSubmit = () => {
     toggle();
     setProfile(profile);
-    //setInfo({profileName:profile,GamePlayed:"", correctWords:{}, inCorrectWords:{}, WPM:{}, Accuracy:{}});
   }
   const modalInputChange = (event) => {
     setProfile(event.target.value);
   }
-
+  const totalCorrectWords = info.reduce((sum,result) => {
+    sum += result.correctWords ;
+    return sum;
+  }, 0);
+  const totalIncorrectWords = info.reduce((sum,result) => {
+    sum += result.inCorrectWords ;
+    return sum;
+  }, 0);
+  const sumOfWpm = info.reduce((sum,result) => {
+    sum += result.WPM ;
+    return sum;
+  }, 0);
+  const sumOfAccuracy = info.reduce((sum,result) => {
+    sum += result.Accuracy ;
+    return sum;
+  }, 0);
+  const averageWpm = (sumOfWpm/numberOfTest);
+  const averageAccuracy = Math.round(sumOfAccuracy/numberOfTest);
+  const bestWpm = info.reduce((maximum,result) => {
+    maximum = Math.max(result.WPM)
+    return maximum;
+  })
+  const bestAccuracy = info.reduce((maximum,result) => {
+    maximum = Math.max(result.Accuracy)
+    return maximum;
+  })
+  //console.log(bestWpm);
+  //console.log(bestAccuracy);
   return (
     <section className="App">
       <Modal
@@ -215,7 +245,7 @@ const App = () => {
             <h3>Average WPM</h3>
           </div>
           <div>
-            <h4>averageWpm</h4>
+            <h4>{averageWpm}</h4>
           </div>
         </div>
       </div>
