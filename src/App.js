@@ -161,7 +161,7 @@ const App = () => {
     return sum;
   }, 0);
   const averageWpm = (numberOfTest === 0) ? ( 0 ) : ( Math.round(sumOfWpm / numberOfTest));
-  const averageAccuracy = Math.round(sumOfAccuracy/numberOfTest);
+  const averageAccuracy = (numberOfTest === 0) ? ( 0 ) : ( Math.round(sumOfAccuracy / numberOfTest))
   return (
     <section className="App">
       <Modal
@@ -247,7 +247,7 @@ const App = () => {
           </div>
         </div>
       </div>
-      <Sidebar profileName={profile} info={info} correctWord={totalCorrectWords} incorrectWord={totalIncorrectWords} correctChar={correctChar} averageWpm={averageWpm} averageAccuracy={averageAccuracy}/>
+      <Sidebar profileName={profile} info={info} gamePlayed={numberOfTest} correctWord={totalCorrectWords} incorrectWord={totalIncorrectWords} correctChar={correctChar} averageWpm={averageWpm} averageAccuracy={averageAccuracy}/>
     </section>
   );
 }
