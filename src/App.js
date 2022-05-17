@@ -1,6 +1,7 @@
 import './App.css';
 import React, {useState,useEffect,useRef} from "react";
 import randomWords from "random-words";
+import TextBox from "./components/TextBox";
 import useModal from "./hooks/useModal";
 import Modal from "./components/Modal";
 import Navbar from "./components/Navbar";
@@ -180,41 +181,17 @@ const App = () => {
       />
       <Navbar profileName={profile}/>
       <div>
-        <div className="text-box">
-          <div className="header-row">
-            <div className="header-column">
-              <p className="counter">
-                {(count < 10) ? ( "00:0"+count ) : ("00:"+count)}
-              </p>
-            </div>
-            <div className="header-column">
-              <input className="input-field" ref={textInput} disabled={status !== "started"} type="text" onKeyDown={handleKeyUpdate} value={currentValue} onChange={(e) => setCurrentValue(e.target.value)}/>
-            </div>
-            <div className="header-column">
-              <button className="start-button" onClick={countDownStart}>
-                {
-                  (status === "finished") ? (
-                      "Restart"
-                  ) : (
-                      "Start"
-                  )
-                }
-              </button>
-            </div>
-          </div>
-          <div className="row">
-            {words.map((word,index) => (
-                <span key={index}>
-                <span>
-                  {word.split("").map((char,i) => (
-                      <span className={setCharClass(index,i,char)} key={i}>{char}</span>
-                  ))}
-                </span>
-                <span> </span>
-              </span>
-            ))}
-          </div>
-        </div>
+        <TextBox
+            count={count}
+            textInput={textInput}
+            handleKeyUpdate={handleKeyUpdate}
+            status={status}
+            currentValue={currentValue}
+            setCurrentValue={setCurrentValue}
+            countDownStart={countDownStart}
+            words={words}
+            setCharClass={setCharClass}
+        />
         <div className="result-box">
           <div className="result-header">
             <h1>Current Result</h1>
@@ -236,7 +213,7 @@ const App = () => {
           <div className="row" style={{borderTop:'2px solid #003366'}}>
             <div className="column" style={{borderRight:'2px solid #003366'}}>
               <h4>WPM</h4>
-              <h4>{(runningTime !== 0) ? (
+              <h4>{(correctWord !== 0) ? (
                   currentResult.WPM
               ) : (
                   0
