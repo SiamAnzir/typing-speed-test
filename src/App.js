@@ -222,11 +222,15 @@ const App = () => {
           <div className="row">
             <div className="column" style={{borderRight:'2px solid #003366'}}>
               <h4>Correct Words</h4>
-              <h4>{currentResult.correctWords}</h4>
+              <h4>{(correctWord !== 0) ? (
+                  currentResult.correctWords
+              ) : (correctWord)}</h4>
             </div>
             <div className="column">
               <h4>InCorrect Words</h4>
-              <h4>{currentResult.inCorrectWords}</h4>
+              <h4>{(incorrectWord !== 0) ? (
+                  currentResult.inCorrectWords
+              ) : (incorrectWord)}</h4>
             </div>
           </div>
           <div className="row" style={{borderTop:'2px solid #003366'}}>
