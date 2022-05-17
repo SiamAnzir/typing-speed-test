@@ -9,11 +9,12 @@ import useLocalStorage from "./hooks/useLocalStorage";
 
 const App = () => {
   const time = 10;
+
   const accuracy = (correctWord,incorrectWord) => {
     return Math.round((correctWord / (correctWord + incorrectWord)) * 100)
   };
-  const wpm = (correctWord,incorrectWord) => {
-    return Math.floor((correctWord +incorrectWord))
+  const wpm = (numberOfChar,runningTime) => {
+    return Math.round((numberOfChar/5)/runningTime)
   };
 
   const [words,setWords] = useState([]);
@@ -38,8 +39,10 @@ const App = () => {
   const [info,setInfo] = useLocalStorage('userInfo',[]);
   const [currentResult,setCurrentResult] = useState(newTestResult);
   const [correctChar,setCorrectChar] = useLocalStorage('Correct-Char','');
+  const [numberOfChar,setNumberOfChar] = useState(0);
   const textInput = useRef(null);
   const {isShowing, toggle} = useModal();
+  const [runningTime,setRunningTime] = useState(0);
 
   useEffect(() =>{
     setWords(createWords);
@@ -56,7 +59,7 @@ const App = () => {
       setInfo([...info,currentResult]);
       setCorrectChar(correctEntry);
     }
-  },[status])
+  },[status]);
 
   const createWords = () => {
     return new Array(240).fill(null).map(() => randomWords())
@@ -69,6 +72,8 @@ const App = () => {
       setIncorrectWord(0);
       setCurrentCharIndex(-1);
       setCurrentChar("");
+      setNumberOfChar(0);
+      setRunningTime(0);
     }
     if(status !== "started"){
       setStatus("started");
@@ -88,6 +93,7 @@ const App = () => {
       },1000)
     }
   }
+
   const handleKeyUpdate = ({key, keyCode}) => {
     if(keyCode === 32){
       checkWord();
@@ -98,23 +104,25 @@ const App = () => {
     else if (keyCode === 8) {
       setCurrentCharIndex(currentCharIndex - 1);
       setCurrentChar("");
+      setNumberOfChar(numberOfChar - 1);
     } else {
       setCurrentCharIndex(currentCharIndex + 1);
       setCurrentChar(key);
+      setNumberOfChar(numberOfChar + 1);
+      setRunningTime(((10-count)/10));
     }
   }
   const checkWord = () => {
     if(words[currentWordIndex] === currentValue.trim()){
       setCorrectEntity([...correctEntity,words[currentWordIndex]]);
       setCorrectWord(correctWord + 1);
-      setCurrentResult({ correctWords:correctWord+1, inCorrectWords:incorrectWord, WPM:wpm(correctWord+1,incorrectWord), Accuracy:accuracy(correctWord+1,incorrectWord)});
+      setCurrentResult({ correctWords:correctWord+1, inCorrectWords:incorrectWord, WPM:wpm(numberOfChar,runningTime), Accuracy:accuracy(correctWord+1,incorrectWord)});
     }
     else{
       setIncorrectWord(incorrectWord + 1);
-      setCurrentResult({ correctWords:correctWord, inCorrectWords:incorrectWord+1, WPM:wpm(correctWord,incorrectWord+1), Accuracy:accuracy(correctWord,incorrectWord+1)});
+      setCurrentResult({ correctWords:correctWord, inCorrectWords:incorrectWord+1, WPM:wpm(numberOfChar,runningTime), Accuracy:accuracy(correctWord,incorrectWord+1)});
     }
   }
-
   const charArray = correctEntity.map((word) => {
     return word.split('').reduce((total, letter) => {
       total[letter] ? total[letter]++ : total[letter] = 1;
@@ -161,7 +169,7 @@ const App = () => {
     return sum;
   }, 0);
   const averageWpm = (numberOfTest === 0) ? ( 0 ) : ( Math.round(sumOfWpm / numberOfTest));
-  const averageAccuracy = (numberOfTest === 0) ? ( 0 ) : ( Math.round(sumOfAccuracy / numberOfTest))
+  const averageAccuracy = (numberOfTest === 0) ? ( 0 ) : ( Math.round(sumOfAccuracy / numberOfTest));
   return (
     <section className="App">
       <Modal
@@ -224,7 +232,11 @@ const App = () => {
           <div className="row" style={{borderTop:'2px solid #003366'}}>
             <div className="column" style={{borderRight:'2px solid #003366'}}>
               <h4>WPM</h4>
-              <h4>{ currentResult.WPM }</h4>
+              <h4>{(runningTime !== 0) ? (
+                  currentResult.WPM
+              ) : (
+                  0
+              )}</h4>
             </div>
             <div className="column">
               <h4>Accuracy</h4>
