@@ -2,6 +2,7 @@ import './App.css';
 import React, {useState,useEffect,useRef} from "react";
 import randomWords from "random-words";
 import TextBox from "./components/TextBox";
+import ResultBox from "./components/ResultBox";
 import useModal from "./hooks/useModal";
 import Modal from "./components/Modal";
 import Navbar from "./components/Navbar";
@@ -192,55 +193,22 @@ const App = () => {
             words={words}
             setCharClass={setCharClass}
         />
-        <div className="result-box">
-          <div className="result-header">
-            <h1>Current Result</h1>
-          </div>
-          <div className="row">
-            <div className="column" style={{borderRight:'2px solid #003366'}}>
-              <h4>Correct Words</h4>
-              <h4>{(correctWord !== 0) ? (
-                  currentResult.correctWords
-              ) : (correctWord)}</h4>
-            </div>
-            <div className="column">
-              <h4>InCorrect Words</h4>
-              <h4>{(incorrectWord !== 0) ? (
-                  currentResult.inCorrectWords
-              ) : (incorrectWord)}</h4>
-            </div>
-          </div>
-          <div className="row" style={{borderTop:'2px solid #003366'}}>
-            <div className="column" style={{borderRight:'2px solid #003366'}}>
-              <h4>WPM</h4>
-              <h4>{(correctWord !== 0) ? (
-                  currentResult.WPM
-              ) : (
-                  0
-              )}</h4>
-            </div>
-            <div className="column">
-              <h4>Accuracy</h4>
-              <h4>
-                {(correctWord !== 0 ? (
-                    currentResult.Accuracy + "%"
-                ) : (
-                    "0%"
-                ))}
-              </h4>
-            </div>
-          </div>
-        </div>
-        <div className="avg-result-box">
-          <div className="result-header">
-            <h3>Average WPM</h3>
-          </div>
-          <div>
-            <h4>{averageWpm}</h4>
-          </div>
-        </div>
+        <ResultBox
+            correctWord={correctWord}
+            incorrectWord={incorrectWord}
+            currentResult={currentResult}
+            averageWpm={averageWpm}
+        />
       </div>
-      <Sidebar profileName={profile} info={info} gamePlayed={numberOfTest} correctWord={totalCorrectWords} incorrectWord={totalIncorrectWords} correctChar={correctChar} averageWpm={averageWpm} averageAccuracy={averageAccuracy}/>
+      <Sidebar profileName={profile}
+               info={info}
+               gamePlayed={numberOfTest}
+               correctWord={totalCorrectWords}
+               incorrectWord={totalIncorrectWords}
+               correctChar={correctChar}
+               averageWpm={averageWpm}
+               averageAccuracy={averageAccuracy}
+      />
     </section>
   );
 }
