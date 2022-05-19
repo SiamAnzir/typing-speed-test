@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import profile from '../img/profilepic.png';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faClipboardCheck} from "@fortawesome/free-solid-svg-icons";
+import {faCircleCheck} from "@fortawesome/free-regular-svg-icons";
 
 const Modal = ({ isShowing, modalHandleSubmit,modalInputChange,profileName }) => (isShowing) ? ReactDOM.createPortal(
     <>
@@ -13,7 +16,7 @@ const Modal = ({ isShowing, modalHandleSubmit,modalInputChange,profileName }) =>
                     </div>
                     <label>Type Your Full Name</label>
                     <input className="modal-input-field" required type="text" placeholder="Profile Name...." minLength="8" value={(profileName === "") ? ("") : (profileName)} onChange={modalInputChange}/>
-                    <button className="modal-button" type="submit">Submit</button>
+                    <button className="modal-button" type="submit"><FontAwesomeIcon icon={faCircleCheck} style={{ marginRight: '.2rem' }}/>Submit</button>
                 </form>
             </div>
         </div>
