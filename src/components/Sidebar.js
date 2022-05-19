@@ -2,6 +2,16 @@ import React, {useState} from "react";
 import image from "../img/profilepic.png";
 import {Bar,Doughnut} from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {
+    faAngleLeft,
+    faList,
+    faSignal,
+    faIdBadge,
+    faSquarePollVertical,
+    faForward
+} from "@fortawesome/free-solid-svg-icons";
+//import {faIdBadge} from "@fortawesome/free-regular-svg-icons";
 Chart.register(...registerables);
 
 const Sidebar = (props) => {
@@ -40,7 +50,7 @@ const Sidebar = (props) => {
                 <button onClick={() => setShowing(false)}>x</button>
                 <div className="sidebar-row">
                     <div className="sidebar-column">
-                        <h2>Profile Intro</h2>
+                        <h2><FontAwesomeIcon icon={faIdBadge} style={{marginRight:'.2rem'}}/>Profile Intro</h2>
                         <img src={image} alt="profile" style={{height:"180px",width:"180px"}}/>
                         <br/>
                         <p>{props.profileName}</p>
@@ -75,7 +85,7 @@ const Sidebar = (props) => {
                         )}
                     </div>
                     <div className="sidebar-column">
-                        <h2>Full Statistics </h2>
+                        <h2><FontAwesomeIcon icon={faSquarePollVertical} style={{marginRight:'.2rem'}}/>Full Statistics </h2>
                         <div style={{paddingRight:'10px'}}>
                             <ul>
                                 <li><b>Number of Tests: {props.gamePlayed}</b></li>
@@ -104,7 +114,10 @@ const Sidebar = (props) => {
             </div>) :
             (
                 <div className="sideNavBtn">
-                    <button className="full-stat-button" onClick={() => setShowing(true)} type="submit">See Full Stats</button>
+                    <button className="full-stat-button" onClick={() => setShowing(true)} type="submit">
+                        <span style={{paddingLeft:'5px'}}>See </span>
+                        <span> <FontAwesomeIcon icon={faForward}/> Full Stats </span>
+                    </button>
                 </div>
             )
     )
@@ -112,21 +125,3 @@ const Sidebar = (props) => {
 
 export default Sidebar;
 
-
-
-
-/**
- * const Sidebar = ({showing,setShowing}) => showing ? ReactDOM.createPortal(
- *     <>
- *         <div className="sidebar">
- *             <span onClick={() => setShowing(false)}>x</span>
- *             <p>About</p>
- *             <p>Services</p>
- *             <p>Clients</p>
- *             <p>Contact</p>
- *         </div>
- *     </>,document.body
- * ) : null;
- *
- *
- * export default Sidebar;**/
