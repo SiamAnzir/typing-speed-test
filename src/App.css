@@ -129,7 +129,7 @@
 .sideNavBtn button{
     position: fixed;
     right: -70px;
-    transition: 0.3s;
+    transition: 0.5s;
     padding: 15px;
     width: 100px;
     text-decoration: none;
@@ -147,16 +147,16 @@
     background-color: #008CBA;
 }
 .sidebar {
-
     margin-top: 90px;
     position: fixed;
     z-index: 1;
-    top: 0;
+    top: 20px;
     right: 0;
     background-color: #97b1cc;
     overflow-x: hidden;
     transition: 0.8s;
-    padding-top: 60px;
+    padding-top: 80px;
+    border: 3px solid #011f3d;
 }
 .sidebar p {
     text-align: center;
@@ -165,19 +165,25 @@
     font-size: 25px;
     color: black;
     display: block;
-    transition: 0.3s;
+    text-transform: capitalize;
+    max-width: 100px;
 }
-.sidebar span {
+.sidebar h2 {
+    border-bottom: 3px solid black;
+}
+
+.sidebar button {
     position: absolute;
-    top: 0;
-    right: 25px;
+    top: 10px;
+    right: 10px;
     font-size: 36px;
     margin-left: 50px;
     color: white;
+    background: #003366;
 }
 .sidebar-column {
     float: left;
-    padding: 10px;
+    padding: 12px;
 }
 /* Clear floats after the columns */
 .sidebar-row:after {
