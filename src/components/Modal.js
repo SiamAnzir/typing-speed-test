@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import profile from '../img/profilepic.png';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faClipboardCheck} from "@fortawesome/free-solid-svg-icons";
 import {faCircleCheck} from "@fortawesome/free-regular-svg-icons";
 
 const Modal = ({ isShowing, modalHandleSubmit,modalInputChange,profileName }) => (isShowing) ? ReactDOM.createPortal(
