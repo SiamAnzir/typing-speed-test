@@ -4,14 +4,10 @@ import {Bar,Doughnut} from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    faAngleLeft,
-    faList,
-    faSignal,
     faIdBadge,
     faSquarePollVertical,
     faForward
 } from "@fortawesome/free-solid-svg-icons";
-//import {faIdBadge} from "@fortawesome/free-regular-svg-icons";
 Chart.register(...registerables);
 
 const Sidebar = (props) => {
@@ -53,7 +49,7 @@ const Sidebar = (props) => {
                         <h2><FontAwesomeIcon icon={faIdBadge} style={{marginRight:'.2rem'}}/>Profile Intro</h2>
                         <img src={image} alt="profile" style={{height:"180px",width:"180px"}}/>
                         <br/>
-                        <p>{props.profileName}</p>
+                        <p><b>{props.profileName}</b></p>
                     </div>
                     <div className="sidebar-column">
                         <Bar options={options} data={data} style={{height:'580px',width:'580px'}}/>
