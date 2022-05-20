@@ -1,4 +1,8 @@
 import React from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {
+    faArrowsRotate,
+} from "@fortawesome/free-solid-svg-icons";
 
 const textBox = (props) => {
     return(
@@ -15,6 +19,7 @@ const textBox = (props) => {
                     </div>
                     <div className="header-column">
                         <button className="start-button" onClick={props.countDownStart}>
+                            <FontAwesomeIcon icon={faArrowsRotate} style={{ marginRight: '.5rem' }}/>
                             {
                                 (props.status === "finished") ? (
                                     "Restart"
