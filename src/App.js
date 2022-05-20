@@ -10,7 +10,7 @@ import useModal from "./hooks/useModal";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 const App = () => {
-  const time = 10;
+  const time = 60;
 
   const accuracy = (correctWord,incorrectWord) => {
     return Math.round((correctWord / (correctWord + incorrectWord)) * 100)
