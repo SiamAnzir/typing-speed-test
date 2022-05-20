@@ -3,10 +3,10 @@ import React, {useState,useEffect,useRef} from "react";
 import randomWords from "random-words";
 import TextBox from "./components/TextBox";
 import ResultBox from "./components/ResultBox";
-import useModal from "./hooks/useModal";
 import Modal from "./components/Modal";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import useModal from "./hooks/useModal";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 const App = () => {
