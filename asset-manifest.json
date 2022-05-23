@@ -1,7 +1,7 @@
 {
   "main.css": "/typing-speed-test/static/css/main.f473621e.chunk.css",
-  "main.js": "/typing-speed-test/static/js/main.9c53da45.chunk.js",
-  "main.js.map": "/typing-speed-test/static/js/main.9c53da45.chunk.js.map",
+  "main.js": "/typing-speed-test/static/js/main.4b50b76c.chunk.js",
+  "main.js.map": "/typing-speed-test/static/js/main.4b50b76c.chunk.js.map",
   "static/js/1.709d58a2.chunk.js": "/typing-speed-test/static/js/1.709d58a2.chunk.js",
   "static/js/1.709d58a2.chunk.js.map": "/typing-speed-test/static/js/1.709d58a2.chunk.js.map",
   "static/js/2.226818c6.chunk.js": "/typing-speed-test/static/js/2.226818c6.chunk.js",
@@ -11,6 +11,6 @@
   "static/media/profilepic.png": "/typing-speed-test/static/media/profilepic.d79e75b7.png",
   "static/css/main.f473621e.chunk.css.map": "/typing-speed-test/static/css/main.f473621e.chunk.css.map",
   "index.html": "/typing-speed-test/index.html",
-  "precache-manifest.bf0eeed6fc315ecd2855664f8a1c009c.js": "/typing-speed-test/precache-manifest.bf0eeed6fc315ecd2855664f8a1c009c.js",
+  "precache-manifest.c9e1967373d3875ea5c087c138453799.js": "/typing-speed-test/precache-manifest.c9e1967373d3875ea5c087c138453799.js",
   "service-worker.js": "/typing-speed-test/service-worker.js"
 }

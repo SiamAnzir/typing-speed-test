@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "9c53da4597c980f00968",
+    "revision": "4b50b76ccae8b6c214f0",
     "url": "/typing-speed-test/static/css/main.f473621e.chunk.css"
   },
   {
-    "revision": "9c53da4597c980f00968",
-    "url": "/typing-speed-test/static/js/main.9c53da45.chunk.js"
+    "revision": "4b50b76ccae8b6c214f0",
+    "url": "/typing-speed-test/static/js/main.4b50b76c.chunk.js"
   },
   {
     "revision": "709d58a229027795f766",
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/typing-speed-test/static/media/profilepic.d79e75b7.png"
   },
   {
-    "revision": "2eb74497f6562b360d3c3da615180f7a",
+    "revision": "d53050752079dfbd94c2065f7a31d319",
     "url": "/typing-speed-test/index.html"
   }
 ];
