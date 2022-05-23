@@ -111,7 +111,7 @@ const App = () => {
       setCurrentCharIndex(currentCharIndex + 1);
       setCurrentChar(key);
       setNumberOfChar(numberOfChar + 1);
-      setRunningTime(((10-count)/10));
+      setRunningTime(((60-count)/60));
     }
   }
   const checkWord = () => {
