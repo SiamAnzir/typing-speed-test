@@ -51,10 +51,10 @@ const Sidebar = (props) => {
                         <br/>
                         <p><b>{props.profileName}</b></p>
                     </div>
-                    <div className="sidebar-column">
+                    <div className="sidebar-column" id="graph">
                         <Bar options={options} data={data} style={{height:'580px',width:'580px'}}/>
                     </div>
-                    <div className="sidebar-column">
+                    <div className="sidebar-column" id="graph">
                         {(totalWords === 0) ? (<div></div>) : (
                             <>
                                 <Doughnut
