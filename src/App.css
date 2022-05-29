@@ -266,3 +266,63 @@
     transform: rotate(360deg);
   }
 }
+@media screen and (min-width: 1400px) {
+    .text-box {
+        position: fixed;
+        background-color: #D1DDE9;
+        width: 70%;
+        height: 83%;
+        border: 15px solid #003366;
+        padding: 10px;
+        margin: 20px;
+        font-size: 30px;
+    }
+    .result-box {
+        position: fixed;
+        background-color: #D1DDE9;
+        width: 22%;
+        height: 60%;
+        border: 13px solid #003366;
+        padding: 5px;
+        margin-left: 75%;
+        margin-top: 20px;
+        font-size: 30px;
+    }
+    .avg-result-box {
+        position: fixed;
+        background-color: #D1DDE9;
+        width: 22%;
+        height: 19.5%;
+        border: 13px solid #003366;
+        padding: 5px;
+        margin-left: 75%;
+        margin-top: 34%;
+        font-size: 28px;
+    }
+    .sideNavBtn button{
+        position: fixed;
+        right: -80px;
+        transition: 0.5s;
+        padding: 15px;
+        width: 130px;
+        text-decoration: none;
+        font-size: 30px;
+        color: white;
+        border-radius: 55px;
+    }
+    .sidebar {
+        font-size: 30px;
+    }
+    .sidebar p{
+        font-size: 35px;
+        padding: 32px 32px 32px 32px;
+        max-width: 250px;
+    }
+    .sidebar-column {
+        float: left;
+        padding: 30px;
+    }
+    #graph {
+        margin-top: 50px;
+    }
+}
