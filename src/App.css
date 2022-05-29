@@ -73,8 +73,8 @@
 .text-box {
   position: fixed;
   background-color: #D1DDE9;
-  width: 950px;
-  height: 480px;
+  width: 70%;
+  height: 76%;
   border: 15px solid #003366;
   padding: 10px;
   margin: 20px;
@@ -97,10 +97,10 @@
 .result-box {
     position: fixed;
     background-color: #D1DDE9;
-    width: 260px;
+    width: 19%;
     border: 13px solid #003366;
     padding: 5px;
-    margin-left: 1040px;
+    margin-left: 76%;
     margin-top: 20px;
 }
 .result-header {
@@ -109,11 +109,12 @@
 .avg-result-box {
     position: fixed;
     background-color: #D1DDE9;
-    width: 260px;
+    width: 19%;
+    height: 19%;
     border: 13px solid #003366;
     padding: 5px;
-    margin-left: 1040px;
-    margin-top: 390px;
+    margin-left: 76%;
+    margin-top: 29%;
 }
 .column {
   float: left;
@@ -128,7 +129,7 @@
 }
 .sideNavBtn button{
     position: fixed;
-    right: -70px;
+    right: -50px;
     transition: 0.5s;
     padding: 15px;
     width: 100px;
