@@ -95,7 +95,17 @@ const App = () => {
       },1000)
     }
   }
-
+  const resetButton = () => {
+    setCount(time)
+    setWords(createWords());
+    setCurrentWordIndex(0);
+    setCorrectWord(0);
+    setIncorrectWord(0);
+    setCurrentCharIndex(-1);
+    setCurrentChar("");
+    setNumberOfChar(0);
+    setRunningTime(0);
+  }
   const handleKeyUpdate = ({key, keyCode}) => {
     if(keyCode === 32){
       checkWord();
@@ -190,6 +200,7 @@ const App = () => {
             currentValue={currentValue}
             setCurrentValue={setCurrentValue}
             countDownStart={countDownStart}
+            resetButton={resetButton}
             words={words}
             setCharClass={setCharClass}
         />
