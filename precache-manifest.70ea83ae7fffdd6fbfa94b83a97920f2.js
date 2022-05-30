@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "4b50b76ccae8b6c214f0",
-    "url": "/typing-speed-test/static/css/main.f473621e.chunk.css"
+    "revision": "e1f88cdb1195211de454",
+    "url": "/typing-speed-test/static/css/main.f8da091e.chunk.css"
   },
   {
-    "revision": "4b50b76ccae8b6c214f0",
-    "url": "/typing-speed-test/static/js/main.4b50b76c.chunk.js"
+    "revision": "e1f88cdb1195211de454",
+    "url": "/typing-speed-test/static/js/main.e1f88cdb.chunk.js"
   },
   {
     "revision": "709d58a229027795f766",
     "url": "/typing-speed-test/static/js/1.709d58a2.chunk.js"
   },
   {
-    "revision": "226818c6c2166b17af17",
-    "url": "/typing-speed-test/static/js/2.226818c6.chunk.js"
+    "revision": "5bf2b734e72415900d64",
+    "url": "/typing-speed-test/static/js/2.5bf2b734.chunk.js"
   },
   {
     "revision": "e11d7f08694afe07eb33",
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/typing-speed-test/static/media/profilepic.d79e75b7.png"
   },
   {
-    "revision": "d53050752079dfbd94c2065f7a31d319",
+    "revision": "d2cf7aef06fd3678046f89f47f45792e",
     "url": "/typing-speed-test/index.html"
   }
 ];
