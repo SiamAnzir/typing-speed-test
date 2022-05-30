@@ -1,8 +1,4 @@
 import React from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {
-    faArrowsRotate,
-} from "@fortawesome/free-solid-svg-icons";
 
 const textBox = (props) => {
     return(
@@ -10,24 +6,29 @@ const textBox = (props) => {
             <div className="text-box">
                 <div className="header-row">
                     <div className="header-column">
-                        <p className="counter">
+                        <span className="counter">
                             {(props.count < 10) ? ( "00:0"+props.count ) : ("00:"+props.count)}
-                        </p>
+                        </span>
                     </div>
                     <div className="header-column">
-                        <input className="input-field" ref={props.textInput} disabled={props.status !== "started"} type="text" onKeyDown={props.handleKeyUpdate} value={props.currentValue} onChange={(e) => props.setCurrentValue(e.target.value)}/>
+                        <input className="input-field" ref={props.textInput} disabled={props.status !== "started"}
+                               type="text" onKeyDown={props.handleKeyUpdate} value={props.currentValue}
+                               onChange={(e) => props.setCurrentValue(e.target.value)}
+                        />
                     </div>
                     <div className="header-column">
-                        <button className="start-button" onClick={props.countDownStart}>
-                            <FontAwesomeIcon icon={faArrowsRotate} style={{ marginRight: '.5rem' }}/>
-                            {
-                                (props.status === "finished") ? (
-                                    "Restart"
-                                ) : (
-                                    "Start"
-                                )
-                            }
-                        </button>
+                        {
+                            (props.status === "finished") ? (
+                                <button className="start-button" onClick={props.countDownStart}>
+                                    Restart
+                                </button>
+                            ) : (
+                                <button className="start-button" onClick={props.countDownStart}>
+                                    Start
+                                </button>
+                            )
+                        }
+                        <button className="reset-button" onClick={props.resetButton}>Reset</button>
                     </div>
                 </div>
                 <div className="row">
